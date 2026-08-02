@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: probed
+source: live HTTP probes of Personify Health (rebrand of Virgin Pulse) hosts
+note: >-
+  virginpulse.com no longer serves HTTP (rebranded to Personify Health at
+  personifyhealth.com). No public /.well-known/ discovery documents were
+  found. developer.personifyhealth.com exists but is authentication-gated
+  (401), so its OIDC/OAuth metadata is not publicly reachable. Absence of a
+  record is valid, expected data.
+hosts:
+  - host: https://personifyhealth.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://developer.personifyhealth.com
+    documents:
+      - path: /.well-known/openid-configuration
+        status: 401
